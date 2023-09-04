@@ -12,12 +12,21 @@ class People:
         letter = Letter(self, recipient, content)
         return letter
 
+    def send_letter(self, letter, letterbox):
+        received_letter = self.check_letterbox(letterbox)
+        if not received_letter:
+            letterbox.receive_letter(letter)
+            self.received_letter = False
+        else:
+            return None
+
     def check_letterbox(self, letterbox):
         if letterbox.has_letter:
             self.received_letter = True
             return letterbox.remove_letter()
         else:
             return None
+
 
     @staticmethod
     def read_letter(letter):
