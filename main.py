@@ -23,13 +23,20 @@ class TestLetterSystem(unittest.TestCase):
         result = self.alice.send_letter(letter2, self.bob_letterbox)
         self.assertIsNone(result)
 
- #   def test_bob_sends_letter_and_checks_if_read(self):
+    def test_bob_sends_letter_and_checks_if_read(self):
+        letter = self.bob.write_letter(self.alice, "Howdy friend!")
+        self.bob.send_letter(letter, self.alice_letterbox)
+        self.alice.check_letterbox(self.alice_letterbox)
+        self.alice.read_letter(letter)
+        self.assertTrue(letter.is_read)
 
-   # def test_alice_writes_and_bob_replies(self):
-
-   # def test_bob_checks_letterbox_after_reading(self):
-
-
-
-# if __name__ == '_main__':
-    ##unittest.main()
+    def test_alice_writes_and_bob_replies(self):
+        letter1 = self.alice.write_letter(self.bob, "Hello, how are you?")
+        self.alice.send_letter(letter1, self.bob_letterbox)
+        received_letter1 = self.bob.check_letterbox(self.bob_letterbox)
+        self.assertIsNotNone(received_letter1)
+        letter2 = self.bob.write_letter(self.alice, "I'm good, how are you?")
+        self.bob.send_letter(letter2, self.alice_letterbox)
+        received_letter2 = self.alice.check_letterbox(self.alice_letterbox)
+        self.assertIsNotNone(received_letter2)
+        self.assertEqual(received_letter2.content, "I'm good, how are you?")
