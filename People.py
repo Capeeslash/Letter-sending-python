@@ -21,12 +21,10 @@ class People:
             return None
 
     def check_letterbox(self, letterbox):
-        if letterbox.has_letter:
+        received_letter = letterbox.remove_letter()
+        if received_letter:
             self.received_letter = True
-            return letterbox.remove_letter()
-        else:
-            return None
-
+        return received_letter
 
     @staticmethod
     def read_letter(letter):
