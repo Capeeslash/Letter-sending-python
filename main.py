@@ -2,6 +2,8 @@ import unittest
 from People import People
 from Letter import Letter
 from Letterbox import Letterbox
+from PostOffice import PostOffice
+from Charli import Charli
 
 
 class TestLetterSystem(unittest.TestCase):
@@ -10,6 +12,7 @@ class TestLetterSystem(unittest.TestCase):
         self.bob = People("Bob", "742 Evergreen Tce")
         self.bob_letterbox = Letterbox(self.bob)
         self.alice_letterbox = Letterbox(self.alice)
+        self.charli = Charli(PostOffice())
 
     def test_alice_writes_and_delivers_letter(self):
         letter = self.alice.write_letter(self.bob, "Howdy Bob")
