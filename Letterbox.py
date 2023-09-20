@@ -1,7 +1,6 @@
 from Letter import Letter
 
 
-
 class Letterbox:
 
     def __init__(self, owner):

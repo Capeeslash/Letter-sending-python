@@ -4,6 +4,7 @@ class Letter:
         self.recipient = recipient
         self.content = content
         self.is_read = False
+        self.is_encrypted = False
 
     def mark_as_read(self):
         self.is_read = True
