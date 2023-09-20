@@ -1,4 +1,5 @@
-from Letter import Letter
+from Letterbox import Letterbox
+from PostOffice import PostOffice
 
 
 class Charli:
@@ -17,6 +18,7 @@ class Charli:
     def deliver_letter(self):
         if self.has_package:
             recipient = self.package.recipient
-            recipient.receive_letter(self.package)
+            recipient_letterbox = recipient.letterbox  # Get the recipient's letterbox
+            recipient_letterbox.receive_letter(self.package)
             self.has_package = False
             self.post_office.clear_packages()

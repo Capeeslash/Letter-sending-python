@@ -7,15 +7,16 @@ class People:
         self.name = name
         self.address = address
         self.received_letter = False
+        self.letterbox = Letterbox(self)
 
     def write_letter(self, recipient, content):
         letter = Letter(self, recipient, content)
         return letter
 
-    def send_letter(self, letter, letterbox):
-        received_letter = self.check_letterbox(letterbox)
+    def send_letter(self, letter, post_office):
+        received_letter = self.check_letterbox(post_office)
         if not received_letter:
-            letterbox.receive_letter(letter)
+            post_office.receive_package(letter)  # Send the letter to the post office
             self.received_letter = False
         else:
             return None

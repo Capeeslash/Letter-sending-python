@@ -10,3 +10,9 @@ class PostOffice:
 
     def clear_packages(self):
         self.packages = []
+
+    def remove_letter(self):
+        if self.packages:
+            return self.packages.pop(0)
+        else:
+            return None
